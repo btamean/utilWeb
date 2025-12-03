@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. 입력 내용이 비어있는지 확인
         if (rawJsonText === '') {
-            errorDisplay.textContent = 'JSON 텍스트를 입력해주세요.';
+            errorDisplay.textContent = 'JSON Text Enter.';
             return;
         }
 
@@ -31,14 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 4. 성공적으로 포맷된 텍스트를 출력 영역에 표시
             outputArea.value = formattedJsonText;
-            errorDisplay.textContent = '✅ JSON이 성공적으로 포맷 및 검증되었습니다.';
+            errorDisplay.textContent = '✅ JSON is changed sucessful.';
             copyButton.style.display = 'inline-block'; // 복사 버튼 표시
 
         } catch (error) {
             // 5. JSON 파싱 실패 시 오류 메시지 표시
             console.error(error);
             outputArea.value = rawJsonText; // 오류가 있는 원본 텍스트를 그대로 출력
-            errorDisplay.textContent = `❌ 유효하지 않은 JSON입니다. 오류: ${error.message}`;
+            errorDisplay.textContent = `❌It's not json form. Error : ${error.message}`;
             copyButton.style.display = 'none';
         }
     });
@@ -49,7 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // 텍스트 영역의 내용을 클립보드에 복사
             outputArea.select();
             document.execCommand('copy');
-            alert('JSON 텍스트가 클립보드에 복사되었습니다!');
+            alert('Copy!');
         }
+    });
+
+    const donateButton = document.getElementById('donateButton');
+    // 기부 버튼 이벤트 리스너 추가
+    donateButton.addEventListener('click', () => {
+        // 실제 기부 링크로 변경하세요.
+        const donateUrl = "https://www.paypal.com/paypalme/btamean"; 
+        
+        // 새 탭에서 기부 페이지를 엽니다.
+        window.open(donateUrl, '_blank');
     });
 });

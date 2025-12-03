@@ -1,0 +1,22 @@
+<header class="navigation-bar">
+    <div class="logo">
+        <a href="index.html">🛠️ Developer Utilities</a> 
+    </div>
+    <nav class="nav-links">
+        <a href="index.html" id="navHome">Home</a> 
+        <a href="jsonFormatting.html" id="navJson">JSON Formatter</a>
+        <a href="#" id="urlLink" class="coming-soon-nav">URL Encoder</a> 
+    </nav>
+    <a href="https://www.paypal.com/paypalme/btamean" target="_blank" class="donate-button" id="donateButton">❤️ Donate</a>
+</header>
+ <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    </script>
+<body>
+    <div id="header-placeholder"></div>
+    <!-- 나머지 페이지 콘텐츠 -->
+</body>
