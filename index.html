@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 포맷터 & 검증기</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f7f6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+            font-family: monospace; /* 코드를 위한 글꼴 */
+            font-size: 14px;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        #formatButton {
+            background-color: #007bff;
+            color: white;
+        }
+        #formatButton:hover {
+            background-color: #0056b3;
+        }
+        #copyButton {
+            background-color: #28a745;
+            color: white;
+        }
+        #copyButton:hover {
+            background-color: #1e7e34;
+        }
+        .result-title {
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .error-message {
+            color: #dc3545;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JSON 포맷터 & 검증기</h1>
+
+        <label for="jsonInput">여기에 JSON을 붙여넣으세요:</label>
+        <textarea id="jsonInput" placeholder='예시: {"name": "Test", "age": 30}'></textarea>
+
+        <div class="controls">
+            <button id="formatButton">JSON 포맷 및 검증</button>
+            <button id="copyButton" style="display: none;">결과 복사</button>
+        </div>
+
+        <div class="result-title">결과:</div>
+        <div id="errorMessage" class="error-message"></div>
+        <textarea id="jsonOutput" readonly placeholder="포맷된 JSON 또는 오류 메시지가 여기에 표시됩니다."></textarea>
+    </div>
+
+    <script src="app.js"></script> </body>
+</html>
