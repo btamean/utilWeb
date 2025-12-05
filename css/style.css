@@ -1,25 +1,38 @@
-/* styles.css */
+/* style.css (수정 및 완성된 코드) */
 
+/* style.css 상단 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* 패딩과 보더가 너비/높이 안에 포함되도록 설정 */
+}
+
+/* ... 나머지 CSS 코드 유지 ... */
 /* 기존 스타일은 유지하고 상단바 스타일을 추가합니다. */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding-top: 60px; /* 헤더 높이만큼 body에 padding-top 추가 */
+    /* body에 직접 padding-top을 주는 대신, fixed header를 사용하면 main-content에 마진을 주는 것이 더 일반적입니다. */
     background-color: #f4f7f6;
 }
-.header {
+
+/* Header는 header.html 파일에 있지만, 스타일을 위해 .navigation-bar로 선택자를 변경했습니다. */
+.navigation-bar { 
     background-color: #333;
     color: white;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
-    position: fixed; /* 상단에 고정 */
-    top: 0;
-    width: 100%;
-    z-index: 100; /* 다른 요소 위에 표시 */
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    /* 상단 고정 스타일 */
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
+
 .logo a {
     color: white;
     text-decoration: none;
@@ -30,7 +43,7 @@ body {
     display: flex;
     gap: 20px;
 }
-.nav-links a, .donate-button {
+.nav-links a {
     color: white;
     text-decoration: none;
     padding: 8px 12px;
@@ -40,27 +53,31 @@ body {
 .nav-links a:hover {
     background-color: #555;
 }
+/* Active Nav Link Style */
+.nav-links a.active {
+    background-color: #007bff;
+    font-weight: bold;
+}
 
-/* ---------------------------------------------------- */
-/* 상단바의 Donate 버튼 스타일 (수정된 버전) */
-/* ---------------------------------------------------- */
+/* Donate 버튼 스타일 */
 .donate-button {
-    background-color: #ffc107; /* 밝은 노란색 유지 */
+    background-color: #ffc107;
     color: #333;
     font-weight: bold;
     cursor: pointer;
     border: none;
-    padding: 10px 18px; /* 상단바 버튼 크기 조정 */
+    padding: 10px 18px;
     border-radius: 5px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    text-decoration: none; /* donate button도 <a> 태그로 사용 가능하므로 추가 */
 }
 .donate-button:hover {
     background-color: #e0a800;
-    transform: scale(1.05); /* 살짝 커지는 효과 */
+    transform: scale(1.05);
 }
 
-/* 메인 콘텐츠 영역 스타일 (기존 .container와 유사) */
+/* 메인 콘텐츠 영역 스타일 */
 .main-content {
     max-width: 900px;
     margin: 30px auto;
@@ -68,8 +85,11 @@ body {
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    
+    /* 고정된 헤더 때문에 콘텐츠가 헤더 아래로 숨겨지는 문제를 해결하기 위한 마진 추가 */
+    margin-top: 100px; /* 헤더 높이(60px)보다 충분히 크게 설정 */
 }
-/* 기존 스타일 (textarea, button 등)은 .container 대신 .main-content 내부 요소로 가정하고 유지 */
+/* 기존 스타일 */
 textarea {
     width: 100%;
     height: 300px;
@@ -83,24 +103,55 @@ textarea {
 }
 
 /* ---------------------------------------------------- */
-/* 버튼 공통 스타일 (Controls 내 버튼 - 수정된 버전) */
+/* 버튼 공통 스타일 및 개별 스타일 */
 /* ---------------------------------------------------- */
-.controls button { /* .controls 안에 있는 버튼에만 적용되도록 선택자 조정 */
-    padding: 12px 25px; /* 패딩 증가 */
+.controls button {
+    padding: 12px 25px;
     font-size: 16px;
-    font-weight: 600; /* 글꼴 두께 증가 */
+    font-weight: 600;
     margin-right: 15px;
     cursor: pointer;
     border: none;
-    border-radius: 8px; /* 모서리 둥글게 */
-    transition: all 0.3s ease; /* 부드러운 전환 효과 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* JSON 포맷 버튼 (주요 행동
+/* JSON 포맷 버튼 (주요 행동) */
+#formatButton {
+    background-color: #007bff;
+    color: white;
+}
+#formatButton:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+/* Copy Button (보조 행동) */
+#copyButton { 
+    background-color: #28a745;
+    color: white;
+}
+#copyButton:hover {
+    background-color: #1e7e34;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
 
 
-/* utility-grid 스타일 추가 */
+/* 오류 메시지 스타일 (json.html에서 사용하는 .error-error 클래스) */
+.error-error {
+    color: #dc3545; /* 빨간색 계열 */
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #dc3545;
+    background-color: #f8d7da; /* 연한 빨간색 배경 */
+    border-radius: 4px;
+}
+
+
+/* utility-grid 스타일 (Home 페이지용) */
 .utility-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -113,7 +164,7 @@ textarea {
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    text-decoration: none; /* 링크 밑줄 제거 */
+    text-decoration: none;
     color: #333;
     transition: transform 0.2s, box-shadow 0.2s;
     text-align: center;
@@ -121,7 +172,7 @@ textarea {
 }
 
 .utility-card:hover {
-    transform: translateY(-5px); /* 마우스를 올리면 살짝 뜹니다 */
+    transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -133,10 +184,10 @@ textarea {
 .utility-card h2 {
     font-size: 1.4em;
     margin-top: 0;
-    color: #007bff; /* JSON 포맷터와 어울리는 색상 */
+    color: #007bff;
 }
 
 .utility-card.coming-soon {
-    opacity: 0.6; /* 곧 출시될 기능은 흐릿하게 표시 */
+    opacity: 0.6;
     cursor: not-allowed;
 }
