@@ -1,1 +1,35 @@
-urlEncoder
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Encoder & Decoder</title>
+    <link rel="stylesheet" href="../css/style.css"> 
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="main-content">
+        <div id="urlTool" class="tool-wrapper">
+            <h1>URL Encoder & Decoder</h1>
+            <p>Encode special characters in a URL or text, or decode them back to plain text.</p>
+            
+            <label for="urlInput">Enter URL or Text:</label>
+            <textarea id="urlInput" placeholder="Example: https://naver.com/검색어"></textarea>
+            
+            <div class="controls">
+                <button id="encodeButton">Encode URL</button>
+                <button id="decodeButton">Decode URL</button>
+                <button id="urlCopyButton" style="display: none;">Copy Result</button>
+            </div>
+            
+            <div class="result-title">Result:</div>
+            <div id="urlErrorMessage" class="error-error"></div>
+            <textarea id="urlOutput" readonly placeholder="Encoded or decoded URL will appear here."></textarea>
+        </div>
+        
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
